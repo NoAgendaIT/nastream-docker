@@ -1,7 +1,7 @@
 # Liquidsoap container
 FROM debian:jessie-slim
 
-MAINTAINER Mark van Dijk <mark@noagendahosting.com>
+MAINTAINER Mark van Dijk <operator+dockerfile@noagendastream.com>
 
 RUN apt-get update && apt-get install -y eatmydata && \
 	eatmydata apt-get upgrade -y && \
