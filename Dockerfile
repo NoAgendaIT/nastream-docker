@@ -1,19 +1,12 @@
 # Liquidsoap container
-FROM debian:jessie-slim
+FROM debian:buster-slim
 
 MAINTAINER Mark van Dijk <operator+dockerfile@noagendastream.com>
 
-RUN apt-get update && apt-get install -y eatmydata && \
+RUN set -ex; \
+	apt-get update && apt-get install -y apt-utils eatmydata && \
 	eatmydata apt-get upgrade -y && \
-	eatmydata apt-get install -y liquidsoap \
-		liquidsoap-plugin-camlimages \
-		liquidsoap-plugin-ladspa \
-		liquidsoap-plugin-opus \
-		liquidsoap-plugin-samplerate \
-		liquidsoap-plugin-schroedinger \
-		liquidsoap-plugin-speex \
-		liquidsoap-plugin-theora \
-		liquidsoap-plugin-xmlplaylist && \
+	eatmydata apt-get install -y liquidsoap && \
 	eatmydata apt-get -y clean
 
 USER liquidsoap
