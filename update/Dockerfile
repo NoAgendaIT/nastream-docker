@@ -1,13 +1,14 @@
 # Liquidsoap container
-FROM noagenda/liquidsoap
+FROM noagenda/lqs:buster-latest
 
 USER root
 
-RUN apt-get update && \
-	apt-get -y upgrade && \
-	apt-get -y dist-upgrade && \
-	apt-get -y autoremove && \
-	apt-get clean
+RUN set -ex ;\
+	eatmydata apt-get update \
+	&& eatmydata apt-get -y upgrade \
+	&& eatmydata apt-get -y dist-upgrade \
+	&& eatmydata apt-get -y autoremove \
+	&& eatmydata apt-get -y clean
 
 USER liquidsoap
 
