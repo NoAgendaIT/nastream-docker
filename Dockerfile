@@ -9,6 +9,11 @@ RUN set -ex; \
 	eatmydata apt-get install -y liquidsoap && \
 	eatmydata apt-get -y clean
 
+RUN set -ex; \
+	usermod -u 106 liquidsoap \
+	&& groupmod -g 110 liquidsoap \
+	&& chown 106:110 /var/log/liquidsoap
+
 USER liquidsoap
 
 CMD ["/usr/bin/liquidsoap", "/etc/liquidsoap/noagenda.liq"]
